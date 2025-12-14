@@ -1,0 +1,48 @@
+version: '3.8'
+
+services:
+  mcp-document-server:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: mcp-document-server:latest
+    container_name: mcp-document-server
+
+    # STDIO mode - interactive
+    stdin_open: true
+    tty: false
+
+    # Mount your documents directory
+    volumes:
+      - ./docs:/app/docs:ro  # Read-only mount
+      # - /path/to/your/docs:/app/docs:ro  # カスタムパス例
+
+    # Environment variables
+    environment:
+      - MCP_DOCS_DIR=/app/docs
+      - PYTHONUNBUFFERED=1
+
+    # Logging configuration
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+    # Resource limits (optional)
+    deploy:
+      resources:
+        limits:
+          cpus: '1.0'
+          memory: 512M
+        reservations:
+          cpus: '0.5'
+          memory: 256M
+
+    # Restart policy
+    restart: unless-stopped
+
+# ネットワーク設定（必要に応じて）
+# networks:
+#   mcp-network:
+#     driver: bridge
