@@ -21,6 +21,25 @@ dev = [
     "mypy>=1.8.0",
 ]
 
+[tool.poetry]
+name = "mcp-document-server"
+version = "0.1.0"
+description = "MCP server for efficient document delivery to AI agents"
+authors = ["onoda4480 <mianqiangarutimetto@gmail.com>"]
+readme = "README.md"
+packages = [{include = "mcp_server", from = "src"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+mcp = ">=1.2.0"
+pydantic = ">=2.0.0"
+aiofiles = ">=23.0.0"
+
+[tool.poetry.group.dev.dependencies]
+pytest = ">=8.0.0"
+pytest-asyncio = ">=0.23.0"
+ruff = ">=0.3.0"
+mypy = ">=1.8.0"
 
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]
