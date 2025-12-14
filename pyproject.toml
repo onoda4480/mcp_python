@@ -1,13 +1,24 @@
 [project]
-name = "mcp-python"
+name = "mcp-document-server"
 version = "0.1.0"
-description = ""
+description = "MCP server for efficient document delivery to AI agents"
 authors = [
-    {name = "onoda4480",email = "mianqiangarutimetto@gmail.com"}
+    {name = "onoda4480", email = "mianqiangarutimetto@gmail.com"}
 ]
 readme = "README.md"
-requires-python = ">=3.13"
+requires-python = ">=3.10"
 dependencies = [
+    "mcp>=1.2.0",
+    "pydantic>=2.0.0",
+    "aiofiles>=23.0.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0.0",
+    "pytest-asyncio>=0.23.0",
+    "ruff>=0.3.0",
+    "mypy>=1.8.0",
 ]
 
 
